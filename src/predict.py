@@ -2,8 +2,8 @@
 import joblib
 
 # Carga artefactos
-tfidf = joblib.load('../models/tfidf_vectorizer.joblib')
-model = joblib.load('../models/final_fake_news_model.joblib')
+tfidf = joblib.load('models/tfidf_vectorizer.joblib')
+model = joblib.load('models/final_fake_news_model.joblib')
 
 def predict(texts):
     """
