@@ -1,31 +1,47 @@
+#!/usr/bin/env python3
 
+import sys
 import joblib
+from pathlib import Path
 
-# Carga artefactos
-tfidf = joblib.load('models/tfidf_vectorizer.joblib')
-model = joblib.load('models/final_fake_news_model.joblib')
+# Define the project root and models directory
+BASE = Path(__file__).resolve().parent.parent
+MODELS = BASE / "models"
 
-def predict(texts):
+# Load the TF-IDF vectorizer and the calibrated model
+tfidf = joblib.load(MODELS / "tfidf_vectorizer.joblib")
+model = joblib.load(MODELS / "final_fake_news_model.joblib")
+
+def predict_texts(texts, threshold=0.7):
     """
-    texts: list of strings
-    returns: list of tuples (label, prob_real)
+    Classify a list of news‐style texts as 'real' or 'fake'.
+
+    Parameters:
+    - texts: list of str, each a news headline or article snippet.
+    - threshold: float, cutoff on P(real) above which we label as 'real'.
     """
+    # Transform raw texts into the TF-IDF feature space
     X = tfidf.transform(texts)
-    probs = model.predict_proba(X)
-    preds = model.predict(X)
-    out = []
-    for p, prob in zip(preds, probs):
-        label = 'real' if p==1 else 'fake'
-        out.append((label, prob[p]))
-    return out
+    # Get the probability assigned to the 'real' class
+    probs = model.predict_proba(X)[:, 1]  
+
+    for txt, p in zip(texts, probs):
+        # Determine the final label based on the threshold
+        label = 'real' if p >= threshold else 'fake'
+        # Print both probabilities: P(real) and P(fake)
+        print(
+            f"📰 {txt}\n"
+            f"    → Predicted: {label} "
+            f"(p_real={p:.2f}, p_fake={(1-p):.2f})\n"
+        )
 
 if __name__ == "__main__":
-    # Eexample usage from command line
-    import sys
+    # Read command-line arguments (skip script name)
     inputs = sys.argv[1:]
+    # If no inputs provided, print usage instructions
     if not inputs:
-        print("Usage: python predict.py \"Some news text here\" \"Another text\"")
+        print('Usage: python predict.py "Some news text" "Another headline"')
         sys.exit(1)
-    results = predict(inputs)
-    for txt, (label, prob) in zip(inputs, results):
-        print(f"{label} (p={prob:.2f}): {txt}")
+
+    # Run prediction on provided texts
+    predict_texts(inputs)
