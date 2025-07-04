@@ -7,8 +7,8 @@ model = joblib.load('../models/final_fake_news_model.joblib')
 
 def predict(texts):
     """
-    texts: lista de strings
-    devuelve: lista de tuplas (label, prob_real)
+    texts: list of strings
+    returns: list of tuples (label, prob_real)
     """
     X = tfidf.transform(texts)
     probs = model.predict_proba(X)
@@ -20,7 +20,7 @@ def predict(texts):
     return out
 
 if __name__ == "__main__":
-    # Ejemplo de uso desde línea de comandos
+    # Eexample usage from command line
     import sys
     inputs = sys.argv[1:]
     if not inputs:
