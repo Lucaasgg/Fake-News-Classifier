@@ -16,7 +16,7 @@ ML_Teamwork/
 │   ├── raw/
 │   │   ├── Fake.csv
 │   │   └── True.csv
-│   └── processed/      # (future) cleaned/filtered data
+│   ├── processed/
 ├── models/
 │   ├── tfidf_vectorizer.joblib
 │   └── final_fake_news_model.joblib
