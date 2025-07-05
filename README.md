@@ -146,6 +146,9 @@ matplotlib
 seaborn
 wordcloud
 joblib
+nltk
+tqdm
+
 ```
 
 (Full versions in `requirements.txt`.)

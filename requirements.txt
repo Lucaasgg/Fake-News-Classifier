@@ -1,7 +1,9 @@
-pandas
 numpy
+pandas
 scikit-learn
 matplotlib
 seaborn
+wordcloud
+joblib
 nltk
 tqdm
