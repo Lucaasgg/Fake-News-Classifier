@@ -154,15 +154,6 @@ tqdm
 (Full versions in `requirements.txt`.)
 
 ---
-
-## Next Steps & Improvements
-
-* Deploy as a REST API (e.g., using FastAPI or Flask).
-* Monitor data drift & schedule periodic retraining.
-* Experiment with transformer-based models (e.g., BERT) for deeper context.
-* Add unit tests and continuous integration.
-
----
 ## Team Members
 Machine learning teamwork done by Lucas Garcia Garcia , Jaime del Reguero Garcia , Alejandro Muñoz Suarez
 https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset this is the chosen teamwork.
