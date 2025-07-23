@@ -1,0 +1,4 @@
+# MS Word temp files
+~$*.doc*
+*.doc
+*.docx
