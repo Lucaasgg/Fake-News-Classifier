@@ -1,4 +1,4 @@
-# Fake News Classifier / Machine Learning Teamwork
+# Fake News Classifier / Machine Learning
 
 A complete pipeline to detect real vs. fake news articles using TF-IDF, Logistic Regression, and probability calibration. Includes:
 
@@ -155,5 +155,5 @@ tqdm
 
 ---
 ## Team Members
-Machine learning teamwork done by Lucas Garcia Garcia , Jaime del Reguero Garcia , Alejandro Muñoz Suarez
-https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset this is the chosen teamwork.
+Machine learning teamwork done by Lucas Garcia Garcia.
+https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset project based on this dataset.
